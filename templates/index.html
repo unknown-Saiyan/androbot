@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Chart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #131722; display: flex; justify-content: center; align-items: center; }
+        #chart { border: 1px solid #2a2e39; }
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        const chartElement = document.getElementById('chart');
+        const chart = LightweightCharts.createChart(chartElement, {
+            width: window.innerWidth * 0.98,
+            height: window.innerHeight * 0.98,
+            layout: {
+                backgroundColor: '#131722',
+                textColor: '#d1d4dc',
+            },
+            grid: {
+                vertLines: { color: 'rgba(42, 46, 57, 0)' },
+                horzLines: { color: 'rgba(42, 46, 57, 0.6)' },
+            },
+            crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+            rightPriceScale: { borderColor: 'rgba(197, 203, 206, 0.8)' },
+            timeScale: { borderColor: 'rgba(197, 203, 206, 0.8)' },
+        });
+
+        const candleSeries = chart.addCandlestickSeries({
+            upColor: '#26a69a', downColor: '#ef5350', borderVisible: false,
+            wickUpColor: '#26a69a', wickDownColor: '#ef5350',
+        });
+
+        // This placeholder will be replaced by Python with the actual chart data
+        const chartData = __CHART_DATA__;
+        
+        candleSeries.setData(chartData);
+        chart.timeScale().fitContent();
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            chart.resize(window.innerWidth * 0.98, window.innerHeight * 0.98);
+        });
+    </script>
+</body>
+</html>

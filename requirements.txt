@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+spotipy
+coinbase-advanced-trade-sdk
+google-generativeai
+pandas
+matplotlib
+apscheduler
+python-telegram-bot

@@ -1,0 +1,9 @@
+fastapi
+requests
+python-dotenv
+pydantic
+schedule
+websocket-client
+cryptography
+PyJWT
+uvicorn

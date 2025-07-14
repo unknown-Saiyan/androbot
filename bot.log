@@ -1,0 +1,155 @@
+2025-07-05 10:38:03,273 INFO:🚀 Bot de trading iniciado.
+2025-07-05 10:42:27,901 INFO:🔔 Señal recibida: 
+2025-07-05 10:42:27,901 ERROR:Error fetching balances: Unauthenticated request to private endpoint. If you wish to access private endpoints, you must provide your API key and secret when initializing the RESTClient.
+2025-07-05 10:42:27,902 ERROR:❌ Error al procesar orden: 400: Señal inválida
+2025-07-05 10:47:02,877 INFO:🔔 Señal recibida: BUY
+2025-07-05 10:47:02,878 ERROR:Error fetching balances: Unauthenticated request to private endpoint. If you wish to access private endpoints, you must provide your API key and secret when initializing the RESTClient.
+2025-07-05 10:47:02,878 ERROR:❌ Error al procesar orden: Saldo USD insuficiente
+2025-07-05 11:13:40,982 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:14:06,648 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:14:46,267 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:14:54,655 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:01,602 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:02,755 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:09,510 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:17,295 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:18,387 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:19,504 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:20,595 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:21,836 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:24,228 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:25,349 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:26,470 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:27,558 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:28,684 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:29,829 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:30,940 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:32,039 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:33,145 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:34,247 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:35,369 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:36,481 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:37,595 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:38,815 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:42,245 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:43,428 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:44,574 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:45,936 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:47,234 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:50,913 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:52,046 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:53,190 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:15:54,314 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:18:09,179 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 11:18:39,866 INFO:📩 Señal recibida: BUY
+2025-07-05 11:18:40,434 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:18:40,435 ERROR:Error al obtener balances: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:18:40,435 ERROR:❌ Error al procesar orden: Saldo USD insuficiente
+2025-07-05 11:18:41,122 ERROR:Error enviando a Telegram: 403 Client Error: Forbidden for url: https://api.telegram.org/bot7787081139:AAELOYapunKeZYyv1zTSQBXJEWL04g7DIag/sendMessage
+2025-07-05 11:18:55,879 INFO:📩 Señal recibida: SELL
+2025-07-05 11:18:56,158 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:18:56,158 ERROR:Error al obtener balances: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:18:56,158 ERROR:❌ Error al procesar orden: Saldo BTC insuficiente
+2025-07-05 11:18:56,814 ERROR:Error enviando a Telegram: 403 Client Error: Forbidden for url: https://api.telegram.org/bot7787081139:AAELOYapunKeZYyv1zTSQBXJEWL04g7DIag/sendMessage
+2025-07-05 11:19:43,893 INFO:📩 Señal recibida: BUY
+2025-07-05 11:19:43,998 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:19:43,998 ERROR:Error al obtener balances: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:19:43,998 ERROR:❌ Error al procesar orden: Saldo USD insuficiente
+2025-07-05 11:19:44,653 ERROR:Error enviando a Telegram: 403 Client Error: Forbidden for url: https://api.telegram.org/bot7787081139:AAELOYapunKeZYyv1zTSQBXJEWL04g7DIag/sendMessage
+2025-07-05 11:19:59,819 INFO:📩 Señal recibida: SELL
+2025-07-05 11:20:00,119 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:20:00,120 ERROR:Error al obtener balances: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 11:20:00,120 ERROR:❌ Error al procesar orden: Saldo BTC insuficiente
+2025-07-05 11:20:00,787 ERROR:Error enviando a Telegram: 403 Client Error: Forbidden for url: https://api.telegram.org/bot7787081139:AAELOYapunKeZYyv1zTSQBXJEWL04g7DIag/sendMessage
+2025-07-05 22:40:13,932 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-05 22:47:48,796 INFO:📩 Señal recibida: SELL
+2025-07-05 22:47:49,219 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 22:47:49,220 ERROR:Error al obtener balances: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-05 22:47:49,220 ERROR:❌ Error al procesar orden: Saldo BTC insuficiente
+2025-07-05 22:47:49,905 ERROR:Error enviando a Telegram: 403 Client Error: Forbidden for url: https://api.telegram.org/bot7787081139:AAELOYapunKeZYyv1zTSQBXJEWL04g7DIag/sendMessage
+2025-07-05 22:48:54,330 INFO:🛑 Bot de trading apagado.
+2025-07-06 00:57:40,924 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-06 00:57:42,337 INFO:✅ Bot de trading iniciado correctamente.
+2025-07-06 00:59:06,898 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-06 00:59:06,898 ERROR:Error al obtener balances: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-06 01:05:18,362 INFO:🚀 Bot activo y corriendo.
+2025-07-06 01:05:37,446 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-06 01:08:12,576 INFO:🚀 Bot activo y corriendo.
+2025-07-06 01:08:45,193 ERROR:HTTP Error: 401 Client Error: Unauthorized Unauthorized
+
+2025-07-06 02:38:46,241 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:41:06,174 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:42:11,332 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:42:11,631 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:42:13,743 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:42:14,013 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:44:31,656 ERROR:❌ Error webhook: Expecting value: line 1 column 1 (char 0)
+2025-07-06 02:49:39,437 INFO:🚀 Bot activo y corriendo.
+2025-07-06 02:51:57,752 ERROR:❌ Error webhook: Expecting value: line 1 column 1 (char 0)
+2025-07-06 02:52:39,805 ERROR:Balance error: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. InvalidData(InvalidByte(0, 92))
+Are you sure you generated your key at https://cloud.coinbase.com/access/api ?
+2025-07-06 02:54:12,746 ERROR:Balance error: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. InvalidData(InvalidByte(0, 92))
+Are you sure you generated your key at https://cloud.coinbase.com/access/api ?
+2025-07-06 02:54:12,747 ERROR:❌ Error webhook: Sin saldo en USD
+2025-07-06 02:56:36,097 ERROR:Balance error: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. InvalidData(InvalidByte(0, 92))
+Are you sure you generated your key at https://cloud.coinbase.com/access/api ?
+2025-07-06 02:56:36,098 ERROR:❌ Error webhook: Sin saldo en BTC
+2025-07-06 02:57:58,582 ERROR:Balance error: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. InvalidData(InvalidByte(0, 92))
+Are you sure you generated your key at https://cloud.coinbase.com/access/api ?
+2025-07-06 03:48:48,991 ERROR:Balance error: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#why-can-t-i-import-my-pem-file for more details. InvalidData(InvalidByte(0, 92))
+Are you sure you generated your key at https://cloud.coinbase.com/access/api ?
+2025-07-06 04:10:32,706 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:10:35,050 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:10:42,670 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:10:45,012 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:18:16,974 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:18:28,058 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:18:35,984 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:18:38,895 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:19:12,693 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:42,017 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:44,284 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:46,577 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:48,993 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:51,333 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:53,575 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:55,904 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:20:58,188 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:00,278 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:02,539 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:04,767 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:06,966 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:12,881 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:15,105 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:19,217 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:21,439 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:23,828 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:26,029 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:28,394 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:30,676 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:38,025 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:41,615 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:45,465 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:47,815 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:49,973 INFO:🚀 Bot activo y corriendo.
+2025-07-06 04:21:52,265 INFO:🚀 Bot activo y corriendo.
+2025-07-06 11:09:22,461 INFO:🚀 Bot activo y corriendo.
+2025-07-06 11:22:20,576 INFO:🚀 Bot activo y corriendo.
+2025-07-06 11:31:11,306 INFO:🚀 Bot activo y corriendo.
+2025-07-06 11:57:02,545 INFO:🚀 Bot activo y corriendo.
+2025-07-06 11:58:54,164 INFO:🚀 Bot activo y corriendo.
+2025-07-06 12:01:35,388 INFO:🚀 Bot activo y corriendo.
+2025-07-06 12:16:51,793 INFO:🚀 Bot activo y corriendo.

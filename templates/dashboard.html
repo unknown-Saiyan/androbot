@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndroBot - Trading Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #131722;
+            --primary-color: #1e222d;
+            --secondary-color: #2a2e39;
+            --text-color: #d1d4dc;
+            --green: #26a69a;
+            --red: #ef5350;
+            --blue: #2962ff;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            align-items: start;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--secondary-color);
+            padding-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.2em;
+            color: #e0e0e0;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .summary-item {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .summary-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: #8c9eff;
+            font-weight: 400;
+        }
+        .summary-item p {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 500;
+        }
+        .positive { color: var(--green); }
+        .negative { color: var(--red); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        th {
+            font-weight: 500;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        .trade-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .trade-controls select, .trade-controls input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--secondary-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        .trade-controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .buy-btn { background-color: var(--green); color: white; }
+        .sell-btn { background-color: var(--red); color: white; }
+        .buy-btn:hover { background-color: #2bb7a9; }
+        .sell-btn:hover { background-color: #f76a65; }
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        #toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .summary-card {
+            grid-column: 1 / -1;
+        }
+        .label {
+            font-size: 14px;
+            color: #8c9eff;
+            font-weight: 400;
+        }
+        .value {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .spotify-player-card {
+            grid-column: 1 / -1;
+        }
+        .player-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        #album-art {
+            width: 100px;  /* Reduced from a larger size */
+            height: 100px; /* Reduced from a larger size */
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .player-details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .track-info {
+            margin-bottom: 10px;
+        }
+        #track-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+        #artist-name {
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .player-controls button {
+            background: #3498db;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .player-controls button:hover {
+            background: #2980b9;
+        }
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        #progress-bar {
+            flex-grow: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: #4a627a;
+            outline: none;
+            border-radius: 5px;
+        }
+        #progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #3498db;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        #progress-bar::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #3498db;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .time-display {
+            font-size: 0.8em;
+            color: #bdc3c7;
+            min-width: 40px;
+        }
+        .positions-card .table-container {
+            max-height: 450px; /* Make the positions table scrollable */
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card full-width" style="max-width: 1400px; margin: auto; margin-bottom: 20px;">
+        <h3>🚀 AndroBot Control Center</h3>
+    </div>
+
+    <div class="container">
+        <!-- Left Column -->
+        <div class="column">
+            <div class="card">
+                <h3>Portfolio Summary</h3>
+                <div class="summary-grid">
+                    <div>
+                        <span class="label">Total Value</span>
+                        <p class="value" id="total-value">$0.00</p>
+                    </div>
+                    <div>
+                        <span class="label">Crypto</span>
+                        <p class="value" id="crypto-value">$0.00</p>
+                    </div>
+                    <div>
+                        <span class="label">Cash</span>
+                        <p class="value" id="cash-value">$0.00</p>
+                    </div>
+                    <div>
+                        <span class="label">Unrealized P/L</span>
+                        <p class="value" id="pnl-value">$0.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Now Playing</h3>
+                <div class="player-container">
+                    <img id="album-art" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Album Art">
+                    <div class="player-details">
+                        <div class="track-info">
+                            <div id="track-name">Select a song on Spotify</div>
+                            <div id="artist-name">AndroBot Player</div>
+                        </div>
+                        <div class="player-controls">
+                            <button id="prev-btn">⏮</button>
+                            <button id="play-pause-btn">▶️</button>
+                            <button id="next-btn">⏭</button>
+                        </div>
+                        <div class="progress-container">
+                            <span id="current-time" class="time-display">0:00</span>
+                            <input type="range" id="progress-bar" value="0" min="0" max="100">
+                            <span id="duration" class="time-display">0:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📜 Recent Trades</h3>
+                <div class="table-container">
+                    <table id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trade-history-body">
+                            <!-- History data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="column">
+            <div class="card positions-card">
+                <h3>📊 Positions</h3>
+                <div class="table-container">
+                    <table id="positions-table">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Amount</th>
+                                <th>Value (USD)</th>
+                                <th>P/L (USD)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Position data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Trade Controls</h3>
+                <div class="trade-controls">
+                    <select id="symbol-select">
+                        <!-- Options will be loaded here -->
+                    </select>
+                    <button class="buy-btn" onclick="executeTrade('BUY')">BUY 100%</button>
+                    <button class="sell-btn" onclick="executeTrade('SELL')">SELL 100%</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+        const API_BASE_URL = '/api/v1';
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        async function fetchData(endpoint) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/${endpoint}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error(`Failed to fetch ${endpoint}:`, error);
+                showToast(`Error loading data from ${endpoint}.`);
+                return null;
+            }
+        }
+
+        function formatCurrency(value) {
+            return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        }
+
+        function renderSummary(data) {
+            const totalValueEl = document.getElementById('total-value');
+            const cryptoValueEl = document.getElementById('crypto-value');
+            const cashValueEl = document.getElementById('cash-value');
+            const pnlValueEl = document.getElementById('pnl-value');
+
+            if (!data) {
+                totalValueEl.textContent = cashValueEl.textContent = cryptoValueEl.textContent = pnlValueEl.textContent = '$0.00';
+                return;
+            }
+
+            totalValueEl.textContent = formatCurrency(data.total_value);
+            cryptoValueEl.textContent = formatCurrency(data.crypto);
+            cashValueEl.textContent = formatCurrency(data.cash);
+            pnlValueEl.textContent = formatCurrency(data.unrealized_pnl);
+        }
+
+        function renderPositions(data) {
+            const tbody = document.querySelector('#positions-table tbody');
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4">No positions found.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = data.map(pos => `
+                <tr>
+                    <td>${pos.emoji} ${pos.name} (${pos.symbol})</td>
+                    <td>${pos.amount}</td>
+                    <td>${formatCurrency(pos.value_fiat)}</td>
+                    <td class="${pos.pnl >= 0 ? 'positive' : 'negative'}">${formatCurrency(pos.pnl)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderHistory(data) {
+            const tbody = document.querySelector('#trade-history-body');
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2">No trade history.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = data.slice(-10).reverse().map(trade => `
+                <tr>
+                    <td><span class="${trade.side.toLowerCase() === 'buy' ? 'positive' : 'negative'}">${trade.side.toUpperCase()}</span></td>
+                    <td>${trade.symbol}</td>
+                </tr>
+            `).join('');
+        }
+
+        function loadSymbols(symbols) {
+            const select = document.getElementById('symbol-select');
+            select.innerHTML = symbols.map(s => `<option value="${s.symbol}">${s.emoji} ${s.name} (${s.symbol})</option>`).join('');
+        }
+
+        async function executeTrade(side) {
+            const symbol = document.getElementById('symbol-select').value;
+            if (!symbol) {
+                showToast('Please select a symbol.');
+                return;
+            }
+            showToast(`Executing ${side} order for ${symbol}...`);
+            try {
+                const response = await fetch('/webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: side.toLowerCase(), symbol: symbol })
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    showToast(`${side} order for ${symbol} executed successfully!`);
+                    // Refresh data after a short delay
+                    setTimeout(loadAllData, 2000);
+                } else {
+                    throw new Error(result.detail || 'Trade failed');
+                }
+            } catch (error) {
+                console.error('Trade execution failed:', error);
+                showToast(`Error: ${error.message}`);
+            }
+        }
+
+        async function loadAllData() {
+            const [summary, positions, history, symbols] = await Promise.all([
+                fetchData('portfolio/summary-data'),
+                fetchData('portfolio/positions-data'),
+                fetchData('trades/history-data'),
+                fetchData('supported-symbols')
+            ]);
+            renderSummary(summary);
+            renderPositions(positions);
+            renderHistory(history);
+            if (symbols) {
+                loadSymbols(symbols);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllData();
+            setInterval(loadAllData, 30000); // Refresh every 30 seconds
+        });
+
+        // --- Spotify Player ---
+        const spotifyPlayerContainer = document.getElementById('spotify-player-container');
+        const albumArtEl = document.getElementById('album-art');
+        const trackNameEl = document.getElementById('track-name');
+        const artistNameEl = document.getElementById('artist-name');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        let spotifyPlayer;
+        let deviceId;
+
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            console.log("Spotify SDK Ready.");
+            fetch('/api/v1/spotify/token')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Could not authenticate with Spotify. Please login via Telegram bot or /login endpoint.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const token = data.access_token;
+                    spotifyPlayer = new Spotify.Player({
+                        name: 'AndroBot Web Player',
+                        getOAuthToken: cb => { cb(token); },
+                        volume: 0.5
+                    });
+
+                    // Ready
+                    spotifyPlayer.addListener('ready', ({ device_id }) => {
+                        console.log('Ready with Device ID', device_id);
+                        deviceId = device_id;
+                        spotifyPlayerContainer.style.display = 'block';
+                    });
+
+                    // Not Ready
+                    spotifyPlayer.addListener('not_ready', ({ device_id }) => {
+                        console.log('Device ID has gone offline', device_id);
+                    });
+
+                    // Player State Changed
+                    spotifyPlayer.addListener('player_state_changed', (state) => {
+                        if (!state) {
+                            return;
+                        }
+                        const currentTrack = state.track_window.current_track;
+                        trackNameEl.textContent = currentTrack.name;
+                        artistNameEl.textContent = currentTrack.artists.map(artist => artist.name).join(', ');
+                        albumArtEl.src = currentTrack.album.images[0].url;
+                        playPauseBtn.textContent = state.paused ? '▶️' : '⏸️';
+                    });
+                    
+                    playPauseBtn.addEventListener('click', () => {
+                        spotifyPlayer.togglePlay();
+                    });
+
+                    spotifyPlayer.connect();
+                })
+                .catch(error => {
+                    console.error("Spotify Auth Error:", error);
+                    showToast(`Spotify Auth Error: ${error.message}`);
+                });
+        };
+    </script>
+</body>
+</html>
